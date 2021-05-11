@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 @SpringBootApplication(exclude={SecurityAutoConfiguration.class})
-public class YoucoachApplication {
+public class CodecoachApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(YoucoachApplication.class, args);
+		SpringApplication.run(CodecoachApplication.class, args);
 	}
 
 }
