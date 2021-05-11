@@ -1,5 +1,7 @@
 package com.switchfully.codecoach.domain.models.users;
 
+import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -27,6 +29,21 @@ public class User {
     public User() {
     }
 
+
+    public User(String firstName, String lastName, String email, String password) {
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(firstName, "Firstname");
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(lastName, "LastName");
+        ValidationUtil.throwExceptionIfEmailNullEmptyBlankOrInvalid(email, "email");
+        //TODO will need to be something else for the password:
+        ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(password, "password");
+
+        this.id = UUID.randomUUID();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -47,28 +64,6 @@ public class User {
         return lastName;
     }
 
-    public User setId(UUID id) {
-        this.id = id;
-        return this;
-    }
 
-    public User setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
 
-    public User setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-
-    public User setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
-        return this;
-    }
 }

@@ -14,10 +14,10 @@ public class UserMapper {
 
     public User mapDtoToUser(CreateUserDTO createUserDTO){
         logger.info("Mapping a UserDTO to a User, returning a User");
-        return new User().setFirstName(createUserDTO.getFirstname())
-                .setLastName(createUserDTO.getLastname())
-                .setEmail(createUserDTO.getEmail())
-                .setPassword(createUserDTO.getPassword());
+        return new User(createUserDTO.getFirstname(),
+                createUserDTO.getLastname(),
+                createUserDTO.getEmail(),
+                createUserDTO.getPassword());
     }
 
     public UserDTO mapUserToDto(User user){
