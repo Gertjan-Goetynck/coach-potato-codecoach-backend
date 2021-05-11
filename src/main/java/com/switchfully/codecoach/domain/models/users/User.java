@@ -37,7 +37,6 @@ public class User {
         //TODO check length and character had to be uppercase
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(password, "password");
 
-//        this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
