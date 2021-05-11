@@ -11,7 +11,7 @@ public class User {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private UUID id;
 
     @Column(name = "first_name")
@@ -37,7 +37,7 @@ public class User {
         //TODO check length and character had to be uppercase
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(password, "password");
 
-        this.id = UUID.randomUUID();
+//        this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
