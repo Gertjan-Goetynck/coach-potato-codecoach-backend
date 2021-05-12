@@ -2,26 +2,26 @@ package com.switchfully.codecoach.api.dtos.users;
 
 public class CreateUserDTO {
 
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public CreateUserDTO setFirstname(String firstname) {
-        this.firstname = firstname;
+    public CreateUserDTO setFirstName(String firstName) {
+        this.firstName = firstName;
         return this;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public CreateUserDTO setLastname(String lastname) {
-        this.lastname = lastname;
+    public CreateUserDTO setLastName(String lastName) {
+        this.lastName = lastName;
         return this;
     }
 

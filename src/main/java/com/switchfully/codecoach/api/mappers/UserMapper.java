@@ -14,8 +14,8 @@ public class UserMapper {
 
     public User mapDtoToUser(CreateUserDTO createUserDTO){
         logger.info("Mapping a UserDTO to a User, returning a User");
-        return new User(createUserDTO.getFirstname(),
-                createUserDTO.getLastname(),
+        return new User(createUserDTO.getFirstName(),
+                createUserDTO.getLastName(),
                 createUserDTO.getEmail(),
                 createUserDTO.getPassword());
     }
