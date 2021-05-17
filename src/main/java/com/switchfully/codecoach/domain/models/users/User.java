@@ -3,10 +3,11 @@ package com.switchfully.codecoach.domain.models.users;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 
 import javax.persistence.*;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
+
 public class User {
 
     @Id
@@ -25,6 +26,11 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id") },inverseJoinColumns = { @JoinColumn(name = "role_id") } )
+
+            private List<Role> roles = new ArrayList<>();
 
     public User() {
     }
@@ -63,6 +69,20 @@ public class User {
         return lastName;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public User setRoles(List<Role> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public User addRole(Role role) {
+        this.roles.add(role);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -72,4 +92,6 @@ public class User {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
 }
