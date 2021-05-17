@@ -30,7 +30,7 @@ public class ValidationUtil {
 
     public static void throwExceptionIfEmailNullEmptyBlankOrInvalid(String email, String emailname) {
         throwExceptionIfNullOrEmptyOrBlank(email, emailname);
-        if(!isValidEmail(email)) throw new IllegalArgumentException(email + "Invalid email format.");
+        if(!isValidEmail(email)) throw new IllegalArgumentException(email + " is an invalid email format.");
     }
 
     public static void throwExceptionIfNullOrEmptyOrBlank(Object object, String objectName) {

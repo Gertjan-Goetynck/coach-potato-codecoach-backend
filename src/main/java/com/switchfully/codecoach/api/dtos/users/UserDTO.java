@@ -9,6 +9,10 @@ public class UserDTO {
     private String lastname;
     private String email;
 
+
+
+
+
     public UUID getId() {
         return id;
     }
