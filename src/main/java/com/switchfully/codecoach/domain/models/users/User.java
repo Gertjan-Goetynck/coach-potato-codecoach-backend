@@ -32,9 +32,7 @@ public class User {
     public User(String firstName, String lastName, String email, String password) {
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(firstName, "Firstname");
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(lastName, "LastName");
-        ValidationUtil.throwExceptionIfEmailNullEmptyBlankOrInvalid(email, "email");
-        //TODO will need to be something else for the password:
-        //TODO check length and character had to be uppercase
+        ValidationUtil.throwExceptionIfEmailNullEmptyBlankOrInvalid(email, "Email");
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(password, "password");
 
         this.firstName = firstName;
