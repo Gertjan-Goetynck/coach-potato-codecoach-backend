@@ -6,6 +6,7 @@ import com.switchfully.codecoach.domain.repositories.RoleRepository;
 import com.switchfully.codecoach.domain.repositories.UserJPARepository;
 import com.switchfully.codecoach.infrastructure.exceptions.AlreadyCoachException;
 import com.switchfully.codecoach.infrastructure.exceptions.EmailAlreadyTakenException;
+import com.switchfully.codecoach.infrastructure.exceptions.InvalidLogInDetailsException;
 import com.switchfully.codecoach.infrastructure.exceptions.UserNotFoundException;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 import org.slf4j.Logger;
@@ -53,6 +54,19 @@ public class UserService {
     public User getUserById(String id){
         logger.info("Fetching user with ID" + id);
         return userJPARepository.findById(ValidationUtil.convertStringToUUID(id)).orElseThrow(() -> new UserNotFoundException(id));
+
+    }
+
+    public User logInWithEmailAndPassword(String email, String password){
+        logger.info("Logging in with email "+ email);
+        User user = userJPARepository.findByEmail(email);
+        if (user == null) {
+            throw new UserNotFoundException(email);
+        }
+        else if (!password.equals(user.getPassword())){
+            throw new InvalidLogInDetailsException();
+        }
+        else return user;
 
     }
 

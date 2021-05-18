@@ -46,4 +46,11 @@ public class UserController {
         logger.info("Getting User by ID " + id);
         return userMapper.mapUserToDto(userService.getUserById(id));
     }
+
+    @GetMapping(path ="/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO logInUser(@RequestHeader String email, @RequestHeader String password){
+        logger.info("Attempting to sign in with email " + email + " and password "+ password);
+        return userMapper.mapUserToDto(userService.logInWithEmailAndPassword(email, password));
+    }
 }
