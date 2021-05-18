@@ -2,7 +2,6 @@ package com.switchfully.codecoach.api.controllers;
 
 
 import com.switchfully.codecoach.api.dtos.users.CreateUserDTO;
-import com.switchfully.codecoach.api.dtos.users.UpdateUserDTO;
 import com.switchfully.codecoach.api.dtos.users.UserDTO;
 import com.switchfully.codecoach.api.mappers.UserMapper;
 import com.switchfully.codecoach.service.UserService;
@@ -11,8 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping(path="/users")
