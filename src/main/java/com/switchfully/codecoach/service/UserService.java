@@ -4,6 +4,7 @@ import com.switchfully.codecoach.domain.models.users.User;
 import com.switchfully.codecoach.domain.repositories.RoleRepository;
 import com.switchfully.codecoach.domain.repositories.UserJPARepository;
 import com.switchfully.codecoach.infrastructure.exceptions.EmailAlreadyTakenException;
+import com.switchfully.codecoach.infrastructure.exceptions.UserNotFoundException;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
