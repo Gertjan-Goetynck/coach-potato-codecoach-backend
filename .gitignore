@@ -31,4 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/Logs.log.2021-05-11.0.gz
+/Logs.log.2021-05-12.0.gz
 *.log

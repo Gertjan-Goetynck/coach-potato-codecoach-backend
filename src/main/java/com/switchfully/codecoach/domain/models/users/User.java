@@ -32,6 +32,10 @@ public class User {
 
             private List<Role> roles = new ArrayList<>();
 
+    @OneToOne(cascade=CascadeType.ALL)
+            @JoinColumn(name="id")
+    private CoachProfile coachProfile;
+
     public User() {
     }
 
@@ -69,6 +73,10 @@ public class User {
 
     public List<Role> getRoles() {
         return roles;
+    }
+
+    public CoachProfile getCoachProfile() {
+        return coachProfile;
     }
 
     public User setRoles(List<Role> roles) {

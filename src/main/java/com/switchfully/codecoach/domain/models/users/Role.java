@@ -1,6 +1,5 @@
 package com.switchfully.codecoach.domain.models.users;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.util.UUID;
 
