@@ -27,6 +27,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "picture_url")
+    private String pictureUrl;
+
     @ManyToMany
     @JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id") },inverseJoinColumns = { @JoinColumn(name = "role_id") } )
 
@@ -39,7 +42,7 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String firstName, String lastName, String email, String password, String pictureUrl) {
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(firstName, "Firstname");
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(lastName, "LastName");
         ValidationUtil.throwExceptionIfEmailNullEmptyBlankOrInvalid(email, "Email");
@@ -49,6 +52,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.pictureUrl = pictureUrl;
     }
 
     public UUID getId() {
@@ -77,6 +81,15 @@ public class User {
 
     public CoachProfile getCoachProfile() {
         return coachProfile;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public User setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+        return this;
     }
 
     public User setRoles(List<Role> roles) {

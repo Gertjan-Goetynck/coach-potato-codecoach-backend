@@ -41,4 +41,11 @@ public class UserController {
         logger.info("Make user a coach");
         return userMapper.mapUserToDto((userService.makeCoach(userMapper.mapUserDTOToUser(userDTO))));
     }
+
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO getUserById(@PathVariable String id){
+        logger.info("Getting User by ID " + id);
+        return userMapper.mapUserToDto(userService.getUserById(id));
+    }
 }
