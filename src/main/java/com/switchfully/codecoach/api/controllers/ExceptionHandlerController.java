@@ -2,6 +2,8 @@ package com.switchfully.codecoach.api.controllers;
 
 import com.switchfully.codecoach.infrastructure.exceptions.AlreadyCoachException;
 import com.switchfully.codecoach.infrastructure.exceptions.EmailAlreadyTakenException;
+import com.switchfully.codecoach.infrastructure.exceptions.InvalidLogInDetailsException;
+import com.switchfully.codecoach.infrastructure.exceptions.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -32,6 +34,18 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
     @ExceptionHandler(AlreadyCoachException.class)
     public void handleAlreadyCoachException(AlreadyCoachException exception, HttpServletResponse response) throws  IOException {
         LOGGER.warn(exception.getMessage(), exception);
+        response.sendError(HttpServletResponse.SC_BAD_REQUEST,exception.getMessage());
+    }
+
+    @ExceptionHandler(InvalidLogInDetailsException.class)
+    public void handleInvalidLoginDetailsException(InvalidLogInDetailsException exception, HttpServletResponse response) throws IOException {
+        LOGGER.warn(exception.getMessage(),exception);
+        response.sendError(HttpServletResponse.SC_BAD_REQUEST,exception.getMessage());
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public void handleUserNotFoundException(UserNotFoundException exception, HttpServletResponse response) throws IOException {
+        LOGGER.warn(exception.getMessage(),exception);
         response.sendError(HttpServletResponse.SC_BAD_REQUEST,exception.getMessage());
     }
 }
