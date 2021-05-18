@@ -35,11 +35,12 @@ public class UserController {
         return userMapper.mapUserToDto(userService.addUser(userMapper.mapCreateUserDtoToUser(createUserDTO)));
     }
 
-    @PutMapping(path="/coach", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path="/coach/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces =
+            MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO makeCoach(@RequestBody UserDTO userDTO){
+    public UserDTO makeCoach(@PathVariable String userId){
         logger.info("Make user a coach");
-        return userMapper.mapUserToDto((userService.makeCoach(userMapper.mapUserDTOToUser(userDTO))));
+        return userMapper.mapUserToDto(userService.makeCoach(userService.getUserById(userId)));
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
