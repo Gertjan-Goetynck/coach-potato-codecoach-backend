@@ -3,6 +3,7 @@ package com.switchfully.codecoach.service;
 import com.switchfully.codecoach.domain.models.users.User;
 import com.switchfully.codecoach.domain.repositories.RoleRepository;
 import com.switchfully.codecoach.domain.repositories.UserJPARepository;
+import com.switchfully.codecoach.infrastructure.exceptions.AlreadyCoachException;
 import com.switchfully.codecoach.infrastructure.exceptions.EmailAlreadyTakenException;
 import com.switchfully.codecoach.infrastructure.exceptions.UserNotFoundException;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
@@ -39,7 +40,9 @@ public class UserService {
     }
 
     public User makeCoach(User user) {
-    //TODO check if is already coach
+        if(user.getRoles().contains(roleRepository.getRoleByRoleType("Coach"))){
+            throw  new AlreadyCoachException();
+        }
         logger.info("User is coach now" +  user.toString());
         user.addRole(roleRepository.getRoleByRoleType("Coach"));
         return userJPARepository.save(user);
