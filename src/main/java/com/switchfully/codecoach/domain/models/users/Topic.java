@@ -12,10 +12,10 @@ public class Topic {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name= "topic")
+    @Column(name = "topic")
     private String topic;
 
-    public Topic() {
+    public Topic(){
     }
 
     public Topic(UUID id, String topic) {
