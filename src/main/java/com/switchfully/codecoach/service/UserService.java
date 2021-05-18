@@ -4,13 +4,17 @@ import com.switchfully.codecoach.domain.models.users.User;
 import com.switchfully.codecoach.domain.repositories.RoleRepository;
 import com.switchfully.codecoach.domain.repositories.UserJPARepository;
 import com.switchfully.codecoach.infrastructure.exceptions.EmailAlreadyTakenException;
+import com.switchfully.codecoach.infrastructure.exceptions.UserNotFoundException;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.ValidationUtils;
+
+
+import java.util.UUID;
+import java.util.regex.Pattern;
 
 @Service
 @Transactional
@@ -34,6 +38,12 @@ public class UserService {
         logger.info("User added" + user.toString());
         user.addRole(roleRepository.getRoleByRoleType("Coachee"));
         return userJPARepository.save(user);
+    }
+
+    public User getUserById(String id){
+        logger.info("Fetching user with ID" + id);
+        return userJPARepository.findById(ValidationUtil.convertStringToUUID(id)).orElseThrow(() -> new UserNotFoundException(id));
+
     }
 
     public boolean isEmailTaken(String email) {

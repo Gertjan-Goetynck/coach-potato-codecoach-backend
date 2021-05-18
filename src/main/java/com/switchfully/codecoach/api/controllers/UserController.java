@@ -31,4 +31,11 @@ public class UserController {
         logger.info("New User passed  in controller");
         return userMapper.mapUserToDto(userService.addUser(userMapper.mapDtoToUser(createUserDTO)));
     }
+
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO getUserById(@PathVariable String id){
+        logger.info("Getting User by ID " + id);
+        return userMapper.mapUserToDto(userService.getUserById(id));
+    }
 }

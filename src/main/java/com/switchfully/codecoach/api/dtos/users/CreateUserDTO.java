@@ -6,6 +6,7 @@ public class CreateUserDTO {
     private String lastName;
     private String email;
     private String password;
+    private String pictureUrl;
 
     public String getFirstName() {
         return firstName;
@@ -40,6 +41,15 @@ public class CreateUserDTO {
 
     public CreateUserDTO setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public CreateUserDTO setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
         return this;
     }
 }

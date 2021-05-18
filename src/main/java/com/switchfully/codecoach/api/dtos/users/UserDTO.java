@@ -8,7 +8,7 @@ public class UserDTO {
     private String firstname;
     private String lastname;
     private String email;
-
+    private String pictureUrl;
 
 
 
@@ -46,6 +46,15 @@ public class UserDTO {
 
     public UserDTO setEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public UserDTO setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
         return this;
     }
 }

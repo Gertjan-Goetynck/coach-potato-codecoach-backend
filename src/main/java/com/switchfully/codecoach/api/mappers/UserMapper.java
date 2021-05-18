@@ -17,7 +17,8 @@ public class UserMapper {
         return new User(createUserDTO.getFirstName(),
                 createUserDTO.getLastName(),
                 createUserDTO.getEmail(),
-                createUserDTO.getPassword()
+                createUserDTO.getPassword(),
+                createUserDTO.getPictureUrl()
 
                 );
     }
@@ -28,6 +29,7 @@ public class UserMapper {
                 .setId(user.getId())
                 .setFirstname(user.getFirstName())
                 .setLastname(user.getLastName())
-                .setEmail(user.getEmail());
+                .setEmail(user.getEmail())
+                .setPictureUrl(user.getPictureUrl());
     }
 }
