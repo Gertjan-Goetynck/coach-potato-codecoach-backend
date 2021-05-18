@@ -36,7 +36,7 @@ public class User {
             private List<Role> roles = new ArrayList<>();
 
     @OneToOne(cascade=CascadeType.ALL)
-            @JoinColumn(name="id")
+            @JoinColumn(name="id", referencedColumnName = "user_id")
     private CoachProfile coachProfile;
 
     public User() {
@@ -94,6 +94,11 @@ public class User {
 
     public User setRoles(List<Role> roles) {
         this.roles = roles;
+        return this;
+    }
+
+    public User setCoachProfile(CoachProfile coachProfile) {
+        this.coachProfile = coachProfile; //need to add userId
         return this;
     }
 

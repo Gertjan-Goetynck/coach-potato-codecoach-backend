@@ -1,5 +1,6 @@
 package com.switchfully.codecoach.service;
 
+import com.switchfully.codecoach.domain.models.users.CoachProfile;
 import com.switchfully.codecoach.domain.models.users.User;
 import com.switchfully.codecoach.domain.repositories.RoleRepository;
 import com.switchfully.codecoach.domain.repositories.UserJPARepository;
@@ -45,6 +46,7 @@ public class UserService {
         }
         logger.info("User is coach now" +  user.toString());
         user.addRole(roleRepository.getRoleByRoleType("Coach"));
+        user.setCoachProfile(new CoachProfile(user.getId())); // need to add userId
         return userJPARepository.save(user);
     }
 
