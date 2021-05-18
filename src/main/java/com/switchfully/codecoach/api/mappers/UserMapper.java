@@ -12,14 +12,23 @@ public class UserMapper {
 
     private static final Logger logger = LoggerFactory.getLogger(UserMapper.class);
 
-    public User mapDtoToUser(CreateUserDTO createUserDTO){
-        logger.info("Mapping a UserDTO to a User, returning a User");
+    public User mapCreateUserDtoToUser(CreateUserDTO createUserDTO){
+        logger.info("Mapping a CreateUserDTO to a User, returning a User");
         return new User(createUserDTO.getFirstName(),
                 createUserDTO.getLastName(),
                 createUserDTO.getEmail(),
                 createUserDTO.getPassword()
 
+
                 );
+    }
+
+    public User mapUserDTOToUser(UserDTO userDTO){
+        logger.info("Mapping a UserDTO to a User, returning a User");
+        return new User(userDTO.getId().toString(),
+                userDTO.getFirstname(),
+                userDTO.getLastname(),
+                userDTO.getEmail());
     }
 
     public UserDTO mapUserToDto(User user){

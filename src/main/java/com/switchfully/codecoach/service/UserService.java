@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.ValidationUtils;
 
 @Service
 @Transactional
@@ -28,11 +27,18 @@ public class UserService {
     }
 
     public User addUser(User user) {
-        if(isEmailTaken(user.getEmail())){
+        if (isEmailTaken(user.getEmail())) {
             throw new EmailAlreadyTakenException(user.getEmail());
         }
         logger.info("User added" + user.toString());
         user.addRole(roleRepository.getRoleByRoleType("Coachee"));
+        return userJPARepository.save(user);
+    }
+
+    public User makeCoach(User user) {
+    //TODO check if is already coach
+        logger.info("User is coach now" +  user.toString());
+        user.addRole(roleRepository.getRoleByRoleType("Coach"));
         return userJPARepository.save(user);
     }
 

@@ -2,6 +2,7 @@ package com.switchfully.codecoach.api.controllers;
 
 
 import com.switchfully.codecoach.api.dtos.users.CreateUserDTO;
+import com.switchfully.codecoach.api.dtos.users.UpdateUserDTO;
 import com.switchfully.codecoach.api.dtos.users.UserDTO;
 import com.switchfully.codecoach.api.mappers.UserMapper;
 import com.switchfully.codecoach.service.UserService;
@@ -10,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path="/users")
@@ -29,6 +32,13 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO createUser(@RequestBody CreateUserDTO createUserDTO) {
         logger.info("New User passed  in controller");
-        return userMapper.mapUserToDto(userService.addUser(userMapper.mapDtoToUser(createUserDTO)));
+        return userMapper.mapUserToDto(userService.addUser(userMapper.mapCreateUserDtoToUser(createUserDTO)));
+    }
+
+    @PutMapping(path="/coach", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO makeCoach(@RequestBody UserDTO userDTO){
+        logger.info("Make user a coach");
+        return userMapper.mapUserToDto((userService.makeCoach(userMapper.mapUserDTOToUser(userDTO))));
     }
 }

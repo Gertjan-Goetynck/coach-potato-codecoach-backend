@@ -10,9 +10,6 @@ public class UserDTO {
     private String email;
 
 
-
-
-
     public UUID getId() {
         return id;
     }
