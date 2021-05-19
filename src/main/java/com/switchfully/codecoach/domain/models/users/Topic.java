@@ -1,3 +1,4 @@
+/*
 package com.switchfully.codecoach.domain.models.users;
 
 import javax.persistence.*;
@@ -41,3 +42,4 @@ public class Topic {
         return this;
     }
 }
+*/

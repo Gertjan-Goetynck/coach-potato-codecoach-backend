@@ -1,3 +1,4 @@
+/*
 package com.switchfully.codecoach.api.dtos.users;
 
 import com.switchfully.codecoach.domain.models.users.Topic;
@@ -13,3 +14,4 @@ public class CoachProfileDTO {
     private List<Topic> topic;
 
 }
+*/
