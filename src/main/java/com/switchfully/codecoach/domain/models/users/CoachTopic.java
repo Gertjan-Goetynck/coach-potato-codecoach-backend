@@ -20,9 +20,10 @@ public class CoachTopic {
     public CoachTopic() {
     }
 
-    public CoachTopic(UUID userId, int experience) {
+    public CoachTopic(UUID userId, int experience, Topic topic) {
         this.userId = userId;
         this.experience = experience;
+        this.topic = topic;
     }
 
     public UUID getUserId() {
@@ -51,6 +52,7 @@ public class CoachTopic {
         this.topic = topic;
         return this;
     }
+
 }
 
 
