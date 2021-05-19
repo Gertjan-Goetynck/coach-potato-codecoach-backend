@@ -43,18 +43,17 @@ public class UserService {
 
     public User makeCoach(User user) {
         if(user.getRoles().contains(roleRepository.getRoleByRoleType("Coach"))){
-            throw  new AlreadyCoachException();
+            throw new AlreadyCoachException();
         }
         logger.info("User is coach now" +  user.toString());
         user.addRole(roleRepository.getRoleByRoleType("Coach"));
-        //user.setCoachProfile(new CoachProfile(user.getId())); // need to add userId
+        user.setCoachProfile(new CoachProfile(user.getId()));
         return userJPARepository.save(user);
     }
 
     public User getUserById(String id){
         logger.info("Fetching user with ID" + id);
         return userJPARepository.findById(ValidationUtil.convertStringToUUID(id)).orElseThrow(() -> new UserNotFoundException(id));
-
     }
 
     public User logInWithEmailAndPassword(String email, String password){
@@ -67,7 +66,6 @@ public class UserService {
             throw new InvalidLogInDetailsException();
         }
         else return user;
-
     }
 
     public boolean isEmailTaken(String email) {

@@ -98,7 +98,8 @@ public class User {
     }
 
     public User setCoachProfile(CoachProfile coachProfile) {
-        this.coachProfile = coachProfile; //need to add userId
+        //TODO gertjan needs to fix this everything
+        this.coachProfile = coachProfile;
         return this;
     }
 

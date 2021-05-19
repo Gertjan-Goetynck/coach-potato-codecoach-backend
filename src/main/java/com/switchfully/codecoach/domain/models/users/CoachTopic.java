@@ -2,7 +2,7 @@ package com.switchfully.codecoach.domain.models.users;
 
 import javax.persistence.*;
 import java.util.UUID;
-/*@Entity
+@Entity
 @Table(name = "coach_topics")
 public class CoachTopic {
 
@@ -11,11 +11,11 @@ public class CoachTopic {
     UUID userId;
 
     @Column(name = "experience")
-    int experience;
+    int experience = 0;
 
-   *//* @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="topic_id", referencedColumnName = "topic_id")
-    private Topic topic;*//*
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="topic_id")
+    private Topic topic;
 
     public CoachTopic() {
     }
@@ -23,7 +23,6 @@ public class CoachTopic {
     public CoachTopic(UUID userId, int experience) {
         this.userId = userId;
         this.experience = experience;
-
     }
 
     public UUID getUserId() {
@@ -52,6 +51,6 @@ public class CoachTopic {
         this.topic = topic;
         return this;
     }
-}*/
+}
 
 

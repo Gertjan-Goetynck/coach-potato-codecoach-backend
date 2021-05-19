@@ -18,8 +18,9 @@ public class CoachProfile {
     @Column(name = "availability")
     private boolean available;
 
-   /* @OneToMany(mappedBy = "coach_profiles")
-    private List<CoachTopic> coachTopics = new ArrayList<>();*/
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<CoachTopic> coachTopics = new ArrayList<>();
 
 
     public CoachProfile() {
