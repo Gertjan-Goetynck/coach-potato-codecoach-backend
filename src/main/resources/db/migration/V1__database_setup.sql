@@ -5,6 +5,7 @@ CREATE TABLE coach_profiles
     availability boolean NOT NULL
 
 );
+ALTER TABLE coach_profiles owner to student;
 CREATE TABLE users
 (
     id               uuid         NOT NULL PRIMARY KEY,
@@ -17,13 +18,14 @@ CREATE TABLE users
     FOREIGN KEY (coach_profile_id) REFERENCES coach_profiles(id)
 
 );
+ALTER TABLE users owner to student;
 
 CREATE TABLE roles
 (
     id        uuid         NOT NULL PRIMARY KEY,
     role_type varchar(255) NOT NULL
 );
-
+ALTER TABLE roles owner to student;
 
 CREATE TABLE user_roles
 (
@@ -36,6 +38,7 @@ CREATE TABLE user_roles
     CONSTRAINT user_roles_users_fk
         FOREIGN KEY (user_id) REFERENCES users (id)
 );
+ALTER TABLE user_roles owner to student;
 
 INSERT INTO roles (id, role_type)
 values ('40e6215d-b5c6-4896-987c-f30f3678f608', 'Coachee');
