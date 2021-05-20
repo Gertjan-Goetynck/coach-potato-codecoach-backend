@@ -18,7 +18,7 @@
 	<properties>
 		<java.source.version>15</java.source.version>
 		<java.target.version>15</java.target.version>
-<!--		<java.version>15</java.version>-->
+		<java.version>15</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jsonwebtoken.version>0.10.7</jsonwebtoken.version>
 	</properties>
