@@ -1,4 +1,6 @@
-package com.switchfully.codecoach.api.dtos.users;
+package com.switchfully.codecoach.api.dtos.coachprofiles;
+
+import com.switchfully.codecoach.api.dtos.CoachTopicDTO;
 
 import java.util.List;
 

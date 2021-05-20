@@ -1,4 +1,4 @@
-package com.switchfully.codecoach.api.dtos.users;
+package com.switchfully.codecoach.api.dtos;
 
 public class RoleDTO {
 
