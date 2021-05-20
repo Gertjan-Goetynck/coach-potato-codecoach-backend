@@ -1,5 +1,3 @@
-SET SCHEMA 'code_coach';
-
 CREATE TABLE coach_profiles
 (
     id           uuid    NOT NULL PRIMARY KEY,
