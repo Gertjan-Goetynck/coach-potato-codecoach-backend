@@ -2,9 +2,12 @@ package com.switchfully.codecoach.api.mappers;
 
 import com.switchfully.codecoach.api.dtos.coachprofiles.CoachProfileDTO;
 import com.switchfully.codecoach.domain.models.users.CoachProfile;
+import com.switchfully.codecoach.domain.models.users.CoachTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 
 @Component
 public class CoachProfileMapper {
@@ -25,7 +28,13 @@ public class CoachProfileMapper {
 
     public CoachProfileDTO mapCoachProfileToCoachProfileDTO(CoachProfile coachProfile) {
         logger.info("Mapping a CoachProfile to a CoachProfileDTO");
-        if(coachProfile == null) return null;
+        if(coachProfile==null){
+            return new CoachProfileDTO()
+                    .setIntroduction("")
+                    .setAvailability(false)
+                    .setCoachTopics(new ArrayList<>());
+        }
+
         else return new CoachProfileDTO()
                 .setIntroduction(coachProfile.getIntroduction())
                 .setAvailability(coachProfile.isAvailable())

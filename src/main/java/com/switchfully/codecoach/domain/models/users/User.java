@@ -33,7 +33,7 @@ public class User {
     private String pictureUrl;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", referencedColumnName = "coach_profile_id")
+    @JoinColumn(name = "coach_profile_id")
     private CoachProfile coachProfile;
 
     @ManyToMany
@@ -54,6 +54,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.pictureUrl = pictureUrl;
+        this.coachProfile = new CoachProfile();
     }
 
     public UUID getId() {
