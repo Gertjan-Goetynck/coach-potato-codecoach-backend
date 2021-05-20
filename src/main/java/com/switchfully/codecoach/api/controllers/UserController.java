@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/users")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://coach-potatos-codecoach.netlify.app/")
+
 public class UserController {
 
     private final UserMapper userMapper;
