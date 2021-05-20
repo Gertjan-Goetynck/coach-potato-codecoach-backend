@@ -15,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 @Service
 @Transactional
 public class UserService {
@@ -47,8 +45,10 @@ public class UserService {
         }
         logger.info("User is coach now" +  user.toString());
         user.addRole(roleRepository.getRoleByRoleType("Coach"));
-        user.setCoachProfile(new CoachProfile(user.getId()));
-        return userJPARepository.save(user);
+
+        user.setCoachProfile(new CoachProfile("", true, user.getId()));
+        return user;
+//        return userJPARepository.save(user);
     }
 
     public User getUserById(String id){

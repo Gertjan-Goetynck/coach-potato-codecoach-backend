@@ -4,16 +4,16 @@ import java.util.UUID;
 
 public class CoachTopicDTO {
 
-    private UUID userId;
+    private UUID coachProfileId;
     private int experience;
     private TopicDTO topicDTO;
 
-    public UUID getUserId() {
-        return userId;
+    public UUID getCoachProfileId() {
+        return coachProfileId;
     }
 
-    public CoachTopicDTO setUserId(UUID userId) {
-        this.userId = userId;
+    public CoachTopicDTO setCoachProfileId(UUID coachProfileId) {
+        this.coachProfileId = coachProfileId;
         return this;
     }
 

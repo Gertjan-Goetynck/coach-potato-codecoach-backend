@@ -7,11 +7,11 @@ import java.util.UUID;
 public class CoachTopic {
 
     @Id
-    @Column(name = "user_id")
-    UUID userId;
+    @Column(name = "coach_profile_id")
+    private UUID coachProfileId;
 
     @Column(name = "experience")
-    int experience = 0;
+    private int experience = 0;
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="topic_id")
@@ -20,14 +20,19 @@ public class CoachTopic {
     public CoachTopic() {
     }
 
-    public CoachTopic(UUID userId, int experience, Topic topic) {
-        this.userId = userId;
+    public CoachTopic(UUID coachProfileId, int experience, Topic topic) {
+        this.coachProfileId = coachProfileId;
         this.experience = experience;
         this.topic = topic;
     }
 
-    public UUID getUserId() {
-        return userId;
+    public UUID getCoachProfileId() {
+        return coachProfileId;
+    }
+
+    public CoachTopic setCoachProfileId(UUID coachProfileId) {
+        this.coachProfileId = coachProfileId;
+        return this;
     }
 
     public int getExperience() {
@@ -36,11 +41,6 @@ public class CoachTopic {
 
     public Topic getTopic() {
         return topic;
-    }
-
-    public CoachTopic setUserId(UUID userId) {
-        this.userId = userId;
-        return this;
     }
 
     public CoachTopic setExperience(int experience) {

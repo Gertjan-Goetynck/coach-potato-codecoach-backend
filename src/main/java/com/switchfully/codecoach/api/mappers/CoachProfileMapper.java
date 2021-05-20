@@ -17,16 +17,16 @@ public class CoachProfileMapper {
         this.coachTopicMapper = coachTopicMapper;
     }
 
-    public CoachProfile mapDtoToCoachProfile(CoachProfileDTO coachProfileDTO){
-        logger.info("Mapping a CoachProfileDto to CoachProfile");
-        return new CoachProfile(coachProfileDTO.getId(), coachProfileDTO.getIntroduction(), coachProfileDTO.isAvailability());
-    }
+//    public CoachProfile mapDtoToCoachProfile(CoachProfileDTO coachProfileDTO){
+//        logger.info("Mapping a CoachProfileDto to CoachProfile");
+//        return new CoachProfile(coachProfileDTO.getIntroduction(), coachProfileDTO.isAvailability());
+//    }
 
 
     public CoachProfileDTO mapCoachProfileToCoachProfileDTO(CoachProfile coachProfile) {
         logger.info("Mapping a CoachProfile to a CoachProfileDTO");
-        return new CoachProfileDTO()
-                .setId(coachProfile.getUserId())
+        if(coachProfile == null) return null;
+        else return new CoachProfileDTO()
                 .setIntroduction(coachProfile.getIntroduction())
                 .setAvailability(coachProfile.isAvailable())
                 .setCoachTopics(coachTopicMapper.mapCoachTopicListToCoachTopicDtoList(coachProfile.getCoachTopics()));

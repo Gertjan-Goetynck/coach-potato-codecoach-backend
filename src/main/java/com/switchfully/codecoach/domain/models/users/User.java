@@ -3,7 +3,9 @@ package com.switchfully.codecoach.domain.models.users;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -30,14 +32,13 @@ public class User {
     @Column(name = "picture_url")
     private String pictureUrl;
 
-    @ManyToMany
-    @JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id") },inverseJoinColumns = { @JoinColumn(name = "role_id") } )
-
-            private List<Role> roles = new ArrayList<>();
-
-    @OneToOne(cascade=CascadeType.ALL)
-            @JoinColumn(name="id", referencedColumnName = "user_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", referencedColumnName = "coach_profile_id")
     private CoachProfile coachProfile;
+
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    private List<Role> roles = new ArrayList<>();
 
     public User() {
     }
@@ -92,10 +93,10 @@ public class User {
         return this;
     }
 
-    public User setRoles(List<Role> roles) {
-        this.roles = roles;
-        return this;
-    }
+//    public User setRoles(List<Role> roles) {
+//        this.roles = roles;
+//        return this;
+//    }
 
     public User setCoachProfile(CoachProfile coachProfile) {
         //TODO gertjan needs to fix this everything

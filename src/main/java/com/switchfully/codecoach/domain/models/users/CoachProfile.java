@@ -8,9 +8,11 @@ import java.util.UUID;
 @Entity
 @Table(name = "coach_profiles")
 public class CoachProfile {
+
     @Id
-    @Column(name = "user_id")
-    private UUID userId;
+    @GeneratedValue
+    @Column(name = "id")
+    private UUID id;
 
     @Column(name = "introduction")
     private String introduction;
@@ -18,32 +20,21 @@ public class CoachProfile {
     @Column(name = "availability")
     private boolean available;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<CoachTopic> coachTopics;
+    @Column(name = "user_id")
+    private UUID userId;
 
+    @OneToMany
+    @JoinColumn(name = "coach_profile_id")
+    private List<CoachTopic> coachTopics;
 
     public CoachProfile() {
     }
 
-    public CoachProfile(UUID userId) {
-        this.userId = userId;
-    }
-
-    public CoachProfile(UUID userId, String introduction, boolean available) {
-        this.userId = userId;
+    public CoachProfile(String introduction, boolean available, UUID userId) {
         this.introduction = introduction;
         this.available = available;
-        this.coachTopics = new ArrayList<>();
-    }
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public CoachProfile setUserId(UUID userId) {
         this.userId = userId;
-        return this;
+        this.coachTopics = new ArrayList<>();
     }
 
     public String getIntroduction() {
@@ -68,4 +59,12 @@ public class CoachProfile {
         return coachTopics;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public CoachProfile addCoachTopic(CoachTopic coachTopic) {
+        this.coachTopics.add(coachTopic);
+        return this;
+    }
 }

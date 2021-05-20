@@ -10,7 +10,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
 
+    private final CoachProfileMapper coachProfileMapper;
+    private final RolesMapper rolesMapper;
+
     private static final Logger logger = LoggerFactory.getLogger(UserMapper.class);
+
+    public UserMapper(CoachProfileMapper coachProfileMapper, RolesMapper rolesMapper) {
+        this.coachProfileMapper = coachProfileMapper;
+        this.rolesMapper = rolesMapper;
+    }
 
     public User mapCreateUserDtoToUser(CreateUserDTO createUserDTO){
         logger.info("Mapping a CreateUserDTO to a User, returning a User");
@@ -22,14 +30,14 @@ public class UserMapper {
                 );
     }
 
-    public User mapUserDTOToUser(UserDTO userDTO){
-        logger.info("Mapping a UserDTO to a User, returning a User");
-        return new User(userDTO.getId().toString(),
-                userDTO.getFirstname(),
-                userDTO.getLastname(),
-                userDTO.getEmail(),
-                userDTO.getPictureUrl());
-    }
+//    public User mapUserDTOToUser(UserDTO userDTO){
+//        logger.info("Mapping a UserDTO to a User, returning a User");
+//        return new User(userDTO.getId().toString(),
+//                userDTO.getFirstname(),
+//                userDTO.getLastname(),
+//                userDTO.getEmail(),
+//                userDTO.getPictureUrl());
+//    }
 
     public UserDTO mapUserToDto(User user){
         logger.info("Mapping a User to UserDTO, returning a UserDTO");
@@ -38,6 +46,8 @@ public class UserMapper {
                 .setFirstname(user.getFirstName())
                 .setLastname(user.getLastName())
                 .setEmail(user.getEmail())
-                .setPictureUrl(user.getPictureUrl());
+                .setPictureUrl(user.getPictureUrl())
+                .setCoachProfile(coachProfileMapper.mapCoachProfileToCoachProfileDTO(user.getCoachProfile()))
+                .setRoles(rolesMapper.mapRoleListToRoleDTOList(user.getRoles()));
     }
 }

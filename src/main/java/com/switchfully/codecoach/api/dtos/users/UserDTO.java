@@ -1,5 +1,6 @@
 package com.switchfully.codecoach.api.dtos.users;
 
+import java.util.List;
 import java.util.UUID;
 
 public class UserDTO {
@@ -9,6 +10,26 @@ public class UserDTO {
     private String lastname;
     private String email;
     private String pictureUrl;
+    private CoachProfileDTO coachProfile;
+    private List<RoleDTO> roles;
+
+    public CoachProfileDTO getCoachProfile() {
+        return coachProfile;
+    }
+
+    public List<RoleDTO> getRoles() {
+        return roles;
+    }
+
+    public UserDTO setRoles(List<RoleDTO> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public UserDTO setCoachProfile(CoachProfileDTO coachProfile) {
+        this.coachProfile = coachProfile;
+        return this;
+    }
 
     public UUID getId() {
         return id;

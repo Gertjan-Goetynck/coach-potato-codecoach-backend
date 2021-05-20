@@ -22,7 +22,7 @@ public class CoachTopicMapper {
 
     public CoachTopic mapCoachTopicDTOToCoachTopic(CoachTopicDTO coachTopicDTO){
         logger.info("Mapping CoachTopicDTO to CoachTopic");
-        return new CoachTopic(coachTopicDTO.getUserId(), coachTopicDTO.getExperience(),
+        return new CoachTopic(coachTopicDTO.getCoachProfileId(), coachTopicDTO.getExperience(),
                 topicMapper.mapTopicDTOtoTopic(coachTopicDTO.getTopicDTO()));
 
     }
@@ -30,7 +30,7 @@ public class CoachTopicMapper {
     public CoachTopicDTO mapCoachTopictoCoachTopicDto(CoachTopic coachTopic){
         logger.info("Mapping CoachTopic to CoachTopicDTO");
         return new CoachTopicDTO()
-                .setUserId(coachTopic.getUserId())
+                .setCoachProfileId(coachTopic.getCoachProfileId())
                 .setExperience(coachTopic.getExperience())
                 .setTopicDTO(topicMapper.mapTopicToTopicDTO(coachTopic.getTopic()));
     }
