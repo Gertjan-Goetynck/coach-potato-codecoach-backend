@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +38,9 @@ public class CoachTopicMapper {
 
     public List<CoachTopicDTO> mapCoachTopicListToCoachTopicDtoList(List<CoachTopic> coachTopicsList){
         logger.info("Mapping a list of CoachTopicDtos to list of CoachTopic");
-        return coachTopicsList.stream().map(this::mapCoachTopictoCoachTopicDto).collect(Collectors.toList());
+        if (coachTopicsList == null) {
+            return null;
+        }
+        else return coachTopicsList.stream().map(this::mapCoachTopictoCoachTopicDto).collect(Collectors.toList());
     }
 }
