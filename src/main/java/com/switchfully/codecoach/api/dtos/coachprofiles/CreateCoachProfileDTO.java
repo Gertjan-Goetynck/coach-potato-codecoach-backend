@@ -1,6 +1,6 @@
 package com.switchfully.codecoach.api.dtos.coachprofiles;
 
-import com.switchfully.codecoach.api.dtos.CoachTopicDTO;
+import com.switchfully.codecoach.api.dtos.coachtopics.CoachTopicDTO;
 
 import java.util.List;
 

@@ -1,7 +1,9 @@
 package com.switchfully.codecoach.api.mappers;
 
-import com.switchfully.codecoach.api.dtos.CoachTopicDTO;
+import com.switchfully.codecoach.api.dtos.coachtopics.CoachTopicDTO;
+import com.switchfully.codecoach.api.dtos.coachtopics.CreateCoachTopicDTO;
 import com.switchfully.codecoach.domain.models.users.CoachTopic;
+import com.switchfully.codecoach.domain.models.users.Topic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -20,11 +22,9 @@ public class CoachTopicMapper {
         this.topicMapper = topicMapper;
     }
 
-    public CoachTopic mapCoachTopicDTOToCoachTopic(CoachTopicDTO coachTopicDTO){
+    public CoachTopic mapCreateCoachTopicDTOToCoachTopic(CreateCoachTopicDTO createCoachTopicDTO, Topic topic){
         logger.info("Mapping CoachTopicDTO to CoachTopic");
-        return new CoachTopic(coachTopicDTO.getCoachProfileId(), coachTopicDTO.getExperience(),
-                topicMapper.mapTopicDTOtoTopic(coachTopicDTO.getTopicDTO()));
-
+        return new CoachTopic(createCoachTopicDTO.getCoachProfileId(),topic);
     }
 
     public CoachTopicDTO mapCoachTopictoCoachTopicDto(CoachTopic coachTopic){
@@ -39,6 +39,4 @@ public class CoachTopicMapper {
         logger.info("Mapping a list of CoachTopicDtos to list of CoachTopic");
         return coachTopicsList.stream().map(this::mapCoachTopictoCoachTopicDto).collect(Collectors.toList());
     }
-
-
 }

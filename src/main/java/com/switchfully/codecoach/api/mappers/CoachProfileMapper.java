@@ -27,15 +27,17 @@ public class CoachProfileMapper {
 
 
     public CoachProfileDTO mapCoachProfileToCoachProfileDTO(CoachProfile coachProfile) {
-        logger.info("Mapping a CoachProfile to a CoachProfileDTO");
+        logger.info("Mapping a CoachProfile to a CoachProfileDTO: " + coachProfile);
         if(coachProfile==null){
             return new CoachProfileDTO()
+                    .setId(null)
                     .setIntroduction("")
                     .setAvailability(false)
                     .setCoachTopics(new ArrayList<>());
         }
 
         else return new CoachProfileDTO()
+                .setId(coachProfile.getId())
                 .setIntroduction(coachProfile.getIntroduction())
                 .setAvailability(coachProfile.isAvailable())
                 .setCoachTopics(coachTopicMapper.mapCoachTopicListToCoachTopicDtoList(coachProfile.getCoachTopics()));

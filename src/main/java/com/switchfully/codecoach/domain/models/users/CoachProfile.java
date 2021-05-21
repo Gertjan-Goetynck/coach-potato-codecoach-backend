@@ -23,7 +23,7 @@ public class CoachProfile {
     @Column(name = "user_id")
     private UUID userId;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "coach_profile_id")
     private List<CoachTopic> coachTopics;
 
@@ -66,5 +66,16 @@ public class CoachProfile {
     public CoachProfile addCoachTopic(CoachTopic coachTopic) {
         this.coachTopics.add(coachTopic);
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "CoachProfile{" +
+                "id=" + id +
+                ", introduction='" + introduction + '\'' +
+                ", available=" + available +
+                ", userId=" + userId +
+                ", coachTopics=" + coachTopics +
+                '}';
     }
 }

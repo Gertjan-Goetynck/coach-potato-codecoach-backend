@@ -2,7 +2,7 @@ package com.switchfully.codecoach.service;
 
 import com.switchfully.codecoach.domain.models.users.CoachProfile;
 import com.switchfully.codecoach.domain.models.users.User;
-import com.switchfully.codecoach.domain.repositories.RoleRepository;
+import com.switchfully.codecoach.domain.repositories.RoleJPARepository;
 import com.switchfully.codecoach.domain.repositories.UserJPARepository;
 import com.switchfully.codecoach.infrastructure.exceptions.AlreadyCoachException;
 import com.switchfully.codecoach.infrastructure.exceptions.EmailAlreadyTakenException;
@@ -20,12 +20,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     private final UserJPARepository userJPARepository;
-    private final RoleRepository roleRepository;
+    private final RoleJPARepository roleRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
-    public UserService(UserJPARepository userJPARepository, RoleRepository roleRepository) {
+    public UserService(UserJPARepository userJPARepository, RoleJPARepository roleRepository) {
         this.userJPARepository = userJPARepository;
         this.roleRepository = roleRepository;
     }

@@ -1,6 +1,6 @@
 package com.switchfully.codecoach.api.mappers;
 
-import com.switchfully.codecoach.api.dtos.TopicDTO;
+import com.switchfully.codecoach.api.dtos.topics.TopicDTO;
 import com.switchfully.codecoach.domain.models.users.Topic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

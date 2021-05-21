@@ -1,7 +1,7 @@
 package com.switchfully.codecoach.api.dtos.users;
 
 import com.switchfully.codecoach.api.dtos.coachprofiles.CoachProfileDTO;
-import com.switchfully.codecoach.api.dtos.RoleDTO;
+import com.switchfully.codecoach.api.dtos.roles.RoleDTO;
 
 import java.util.List;
 import java.util.UUID;

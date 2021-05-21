@@ -1,6 +1,6 @@
 package com.switchfully.codecoach.api.mappers;
 
-import com.switchfully.codecoach.api.dtos.RoleDTO;
+import com.switchfully.codecoach.api.dtos.roles.RoleDTO;
 import com.switchfully.codecoach.domain.models.users.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

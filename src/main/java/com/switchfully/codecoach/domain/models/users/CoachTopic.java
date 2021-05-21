@@ -11,18 +11,18 @@ public class CoachTopic {
     private UUID coachProfileId;
 
     @Column(name = "experience")
-    private int experience = 0;
+    private int experience;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name="topic_id")
     private Topic topic;
 
     public CoachTopic() {
     }
 
-    public CoachTopic(UUID coachProfileId, int experience, Topic topic) {
+    public CoachTopic(UUID coachProfileId, Topic topic) {
         this.coachProfileId = coachProfileId;
-        this.experience = experience;
+//        this.experience = 0;
         this.topic = topic;
     }
 

@@ -1,4 +1,4 @@
-package com.switchfully.codecoach.api.dtos;
+package com.switchfully.codecoach.api.dtos.topics;
 
 import java.util.UUID;
 
