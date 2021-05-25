@@ -9,8 +9,8 @@ import java.util.UUID;
 public class UserDTO {
 
     private UUID id;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String email;
     private String pictureUrl;
     private CoachProfileDTO coachProfile;
@@ -43,21 +43,21 @@ public class UserDTO {
         return this;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public UserDTO setFirstname(String firstname) {
-        this.firstname = firstname;
+    public UserDTO setFirstName(String firstName) {
+        this.firstName = firstName;
         return this;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public UserDTO setLastname(String lastname) {
-        this.lastname = lastname;
+    public UserDTO setLastName(String lastName) {
+        this.lastName = lastName;
         return this;
     }
 

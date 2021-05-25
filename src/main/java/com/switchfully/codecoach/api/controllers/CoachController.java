@@ -46,4 +46,9 @@ public class CoachController {
         return userMapper.mapUserToDto(this.coachService.setCoachTopic(coachId,coachTopic));
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UserDTO> getCoaches(){
+        return userMapper.mapListUsersToListUserDtos(this.coachService.getCoaches());
+    }
+
 }

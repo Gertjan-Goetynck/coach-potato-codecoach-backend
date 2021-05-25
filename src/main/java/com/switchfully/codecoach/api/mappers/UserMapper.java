@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class UserMapper {
 
@@ -43,11 +46,15 @@ public class UserMapper {
         logger.info("Mapping a User to UserDTO, returning a UserDTO");
         return new UserDTO()
                 .setId(user.getId())
-                .setFirstname(user.getFirstName())
-                .setLastname(user.getLastName())
+                .setFirstName(user.getFirstName())
+                .setLastName(user.getLastName())
                 .setEmail(user.getEmail())
                 .setPictureUrl(user.getPictureUrl())
                 .setCoachProfile(coachProfileMapper.mapCoachProfileToCoachProfileDTO(user.getCoachProfile()))
                 .setRoles(rolesMapper.mapRoleListToRoleDTOList(user.getRoles()));
+    }
+
+    public List<UserDTO> mapListUsersToListUserDtos(List<User> listUsers) {
+        return listUsers.stream().map(this::mapUserToDto).collect(Collectors.toList());
     }
 }
