@@ -18,7 +18,7 @@ public class CoachProfile {
     private String introduction;
 
     @Column(name = "availability")
-    private boolean available;
+    private String available;
 
     @Column(name = "user_id")
     private UUID userId;
@@ -30,7 +30,7 @@ public class CoachProfile {
     public CoachProfile() {
     }
 
-    public CoachProfile(String introduction, boolean available, UUID userId) {
+    public CoachProfile(String introduction, String available, UUID userId) {
         this.introduction = introduction;
         this.available = available;
         this.userId = userId;
@@ -46,11 +46,11 @@ public class CoachProfile {
         return this;
     }
 
-    public boolean isAvailable() {
+    public String getAvailability() {
         return available;
     }
 
-    public CoachProfile setAvailable(boolean available) {
+    public CoachProfile setAvailable(String available) {
         this.available = available;
         return this;
     }

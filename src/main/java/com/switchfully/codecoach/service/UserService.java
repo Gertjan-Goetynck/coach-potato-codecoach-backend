@@ -46,7 +46,7 @@ public class UserService {
         logger.info("User is coach now" +  user.toString());
         user.addRole(roleRepository.getRoleByRoleType("Coach"));
 
-        user.setCoachProfile(new CoachProfile("", true, user.getId()));
+        user.setCoachProfile(new CoachProfile("", "", user.getId()));
         return user;
 //        return userJPARepository.save(user);
     }

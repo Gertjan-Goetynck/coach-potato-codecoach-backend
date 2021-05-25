@@ -9,7 +9,7 @@ public class CoachProfileDTO {
 
     private UUID id;
     private String introduction;
-    private boolean availability;
+    private String availability;
     private List<CoachTopicDTO> coachTopics;
 
     public UUID getId() {
@@ -30,11 +30,11 @@ public class CoachProfileDTO {
         return this;
     }
 
-    public boolean isAvailability() {
+    public String getAvailability() {
         return availability;
     }
 
-    public CoachProfileDTO setAvailability(boolean availability) {
+    public CoachProfileDTO setAvailability(String availability) {
         this.availability = availability;
         return this;
     }

@@ -7,7 +7,7 @@ import java.util.List;
 public class CreateCoachProfileDTO {
 
     private String introduction;
-    private boolean availability;
+    private String availability;
     private List<CoachTopicDTO> coachTopicsList;
 
     public String getIntroduction() {
@@ -19,11 +19,11 @@ public class CreateCoachProfileDTO {
         return this;
     }
 
-    public boolean isAvailability() {
+    public String getAvailability() {
         return availability;
     }
 
-    public CreateCoachProfileDTO setAvailability(boolean availability) {
+    public CreateCoachProfileDTO setAvailability(String availability) {
         this.availability = availability;
         return this;
     }

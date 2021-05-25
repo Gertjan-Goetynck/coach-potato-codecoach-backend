@@ -2,7 +2,6 @@ package com.switchfully.codecoach.api.mappers;
 
 import com.switchfully.codecoach.api.dtos.coachprofiles.CoachProfileDTO;
 import com.switchfully.codecoach.domain.models.users.CoachProfile;
-import com.switchfully.codecoach.domain.models.users.CoachTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -32,14 +31,14 @@ public class CoachProfileMapper {
             return new CoachProfileDTO()
                     .setId(null)
                     .setIntroduction("")
-                    .setAvailability(false)
+                    .setAvailability("")
                     .setCoachTopics(new ArrayList<>());
         }
 
         else return new CoachProfileDTO()
                 .setId(coachProfile.getId())
                 .setIntroduction(coachProfile.getIntroduction())
-                .setAvailability(coachProfile.isAvailable())
+                .setAvailability(coachProfile.getAvailability())
                 .setCoachTopics(coachTopicMapper.mapCoachTopicListToCoachTopicDtoList(coachProfile.getCoachTopics()));
     }
 }
