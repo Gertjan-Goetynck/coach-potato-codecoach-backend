@@ -8,7 +8,7 @@ public class CoachTopicDTO {
 
     private UUID coachProfileId;
     private int experience;
-    private TopicDTO topicDTO;
+    private TopicDTO topic;
 
     public UUID getCoachProfileId() {
         return coachProfileId;
@@ -28,12 +28,12 @@ public class CoachTopicDTO {
         return this;
     }
 
-    public TopicDTO getTopicDTO() {
-        return topicDTO;
+    public TopicDTO getTopic() {
+        return topic;
     }
 
-    public CoachTopicDTO setTopicDTO(TopicDTO topicDTO) {
-        this.topicDTO = topicDTO;
+    public CoachTopicDTO setTopic(TopicDTO topic) {
+        this.topic = topic;
         return this;
     }
 }
