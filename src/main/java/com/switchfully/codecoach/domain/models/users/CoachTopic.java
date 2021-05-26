@@ -7,6 +7,10 @@ import java.util.UUID;
 public class CoachTopic {
 
     @Id
+    @GeneratedValue
+    @Column(name="id")
+    private UUID id;
+
     @Column(name = "coach_profile_id")
     private UUID coachProfileId;
 
@@ -24,6 +28,10 @@ public class CoachTopic {
         this.coachProfileId = coachProfileId;
 //        this.experience = 0;
         this.topic = topic;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public UUID getCoachProfileId() {
