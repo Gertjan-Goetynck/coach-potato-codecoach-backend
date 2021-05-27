@@ -47,8 +47,16 @@ public class CoachController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public List<UserDTO> getCoaches(){
+        logger.info("Get All Coaches");
         return userMapper.mapListUsersToListUserDtos(this.coachService.getCoaches());
     }
 
+    @GetMapping(path = "/{coachId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO getCoachById(@RequestParam String coachId) {
+        logger.info("Get Coach With Id" + coachId);
+        return userMapper.mapUserToDto(this.coachService.getCoachById(coachId));
+    }
 }
