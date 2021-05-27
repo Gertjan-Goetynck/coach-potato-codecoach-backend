@@ -7,8 +7,6 @@ public class ValidationUtil {
 
     private static final String EMAIL_FORMAT = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
-
-
     public static boolean isNull(Object object) {
         return object == null;
     }

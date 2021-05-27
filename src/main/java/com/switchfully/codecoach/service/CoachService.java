@@ -24,39 +24,31 @@ public class CoachService {
     private final TopicService topicService;
     private final RoleJPARepository roleJPARepository;
 
-
     private static final Logger logger = LoggerFactory.getLogger(CoachService.class);
 
     @Autowired
-    public CoachService(CoachJPARepository coachJPARepository, CoachTopicMapper coachTopicMapper, TopicService topicService, RoleJPARepository roleJPARepository ) {
+    public CoachService(CoachJPARepository coachJPARepository, CoachTopicMapper coachTopicMapper, TopicService topicService, RoleJPARepository roleJPARepository) {
         this.coachJPARepository = coachJPARepository;
         this.coachTopicMapper = coachTopicMapper;
         this.topicService = topicService;
         this.roleJPARepository = roleJPARepository;
     }
 
-    public User getCoachById(String id){
+    public User getCoachById(String id) {
         logger.info("Getting a coach with id: " + id);
         return coachJPARepository.findById(ValidationUtil.convertStringToUUID(id)).orElseThrow(() -> new UserNotFoundException(id));
     }
 
-//    public User setCoachTopics(String coachId, List<CreateCoachTopicDTO> coachTopics){
-//        logger.info("Setting coachtopics: " + coachTopics + "of coach with id: " + coachId);
-//        User coach = getCoachById(coachId);
-//        coachTopics.forEach(coachTopic -> coach.getCoachProfile().addCoachTopic(coachTopicMapper.mapCreateCoachTopicDTOToCoachTopic(coachTopic)));
-//
-//
-//        return coach;
-//    }
-
     public User setCoachTopic(String coachId, CreateCoachTopicDTO coachTopic) {
+        logger.info("Setting a coach topic " + coachTopic + "for coach with id " + coachId);
         User coach = getCoachById(coachId);
-       Topic topic = topicService.getTopicById(coachTopic.getTopic().getId().toString());
-        coach.getCoachProfile().addCoachTopic(coachTopicMapper.mapCreateCoachTopicDTOToCoachTopic(coachTopic,topic));
+        Topic topic = topicService.getTopicById(coachTopic.getTopic().getId().toString());
+        coach.getCoachProfile().addCoachTopic(coachTopicMapper.mapCreateCoachTopicDTOToCoachTopic(coachTopic, topic));
         return coach;
     }
 
     public List<User> getCoaches() {
+        logger.info("Getting all coaches");
         return coachJPARepository.findAllByRolesContains(roleJPARepository.getRoleByRoleType("Coach"));
     }
 }

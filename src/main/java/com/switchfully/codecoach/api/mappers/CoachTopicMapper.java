@@ -24,7 +24,6 @@ public class CoachTopicMapper {
 
     public CoachTopic mapCreateCoachTopicDTOToCoachTopic(CreateCoachTopicDTO createCoachTopicDTO, Topic topic){
         logger.info("Mapping CoachTopicDTO to CoachTopic");
-        logger.info(topic.toString());
         return new CoachTopic(createCoachTopicDTO.getCoachProfileId(),topic);
     }
 

@@ -18,7 +18,6 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionHandlerController.class);
 
-
     @ExceptionHandler(IllegalArgumentException.class)
     public void handleIllegalArgumentException(IllegalArgumentException exception, HttpServletResponse response) throws IOException {
         LOGGER.warn(exception.getMessage(),exception);

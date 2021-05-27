@@ -19,12 +19,6 @@ public class CoachProfileMapper {
         this.coachTopicMapper = coachTopicMapper;
     }
 
-//    public CoachProfile mapDtoToCoachProfile(CoachProfileDTO coachProfileDTO){
-//        logger.info("Mapping a CoachProfileDto to CoachProfile");
-//        return new CoachProfile(coachProfileDTO.getIntroduction(), coachProfileDTO.isAvailability());
-//    }
-
-
     public CoachProfileDTO mapCoachProfileToCoachProfileDTO(CoachProfile coachProfile) {
         logger.info("Mapping a CoachProfile to a CoachProfileDTO: " + coachProfile);
         if(coachProfile==null){

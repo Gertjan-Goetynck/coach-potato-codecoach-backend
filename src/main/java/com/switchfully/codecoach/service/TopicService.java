@@ -6,8 +6,6 @@ import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
-
 @Service
 @Transactional
 public class TopicService {

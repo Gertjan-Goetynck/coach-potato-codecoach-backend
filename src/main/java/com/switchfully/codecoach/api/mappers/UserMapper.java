@@ -33,15 +33,6 @@ public class UserMapper {
                 );
     }
 
-//    public User mapUserDTOToUser(UserDTO userDTO){
-//        logger.info("Mapping a UserDTO to a User, returning a User");
-//        return new User(userDTO.getId().toString(),
-//                userDTO.getFirstname(),
-//                userDTO.getLastname(),
-//                userDTO.getEmail(),
-//                userDTO.getPictureUrl());
-//    }
-
     public UserDTO mapUserToDto(User user){
         logger.info("Mapping a User to UserDTO, returning a UserDTO");
         return new UserDTO()
@@ -55,6 +46,7 @@ public class UserMapper {
     }
 
     public List<UserDTO> mapListUsersToListUserDtos(List<User> listUsers) {
+        logger.info("Mapping a list of Users to a List of UserDTOs");
         return listUsers.stream().map(this::mapUserToDto).collect(Collectors.toList());
     }
 }

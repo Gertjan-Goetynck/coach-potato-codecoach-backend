@@ -31,7 +31,7 @@ public class UserService {
     }
 
     public User addUser(User user) {
-        if(isEmailTaken(user.getEmail())){
+        if (isEmailTaken(user.getEmail())) {
             throw new EmailAlreadyTakenException(user.getEmail());
         }
         logger.info("User added" + user.toString());
@@ -40,32 +40,29 @@ public class UserService {
     }
 
     public User makeCoach(User user) {
-        if(user.getRoles().contains(roleRepository.getRoleByRoleType("Coach"))){
+        if (user.getRoles().contains(roleRepository.getRoleByRoleType("Coach"))) {
             throw new AlreadyCoachException();
         }
-        logger.info("User is coach now" +  user.toString());
+        logger.info("User is coach now" + user.toString());
         user.addRole(roleRepository.getRoleByRoleType("Coach"));
 
         user.setCoachProfile(new CoachProfile("", "", user.getId()));
         return user;
-//        return userJPARepository.save(user);
     }
 
-    public User getUserById(String id){
+    public User getUserById(String id) {
         logger.info("Fetching user with ID" + id);
         return userJPARepository.findById(ValidationUtil.convertStringToUUID(id)).orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    public User logInWithEmailAndPassword(String email, String password){
-        logger.info("Logging in with email "+ email);
+    public User logInWithEmailAndPassword(String email, String password) {
+        logger.info("Logging in with email " + email);
         User user = userJPARepository.findByEmail(email);
         if (user == null) {
             throw new UserNotFoundException(email);
-        }
-        else if (!password.equals(user.getPassword())){
+        } else if (!password.equals(user.getPassword())) {
             throw new InvalidLogInDetailsException();
-        }
-        else return user;
+        } else return user;
     }
 
     public boolean isEmailTaken(String email) {

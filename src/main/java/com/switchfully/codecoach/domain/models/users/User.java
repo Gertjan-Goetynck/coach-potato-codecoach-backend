@@ -94,13 +94,7 @@ public class User {
         return this;
     }
 
-//    public User setRoles(List<Role> roles) {
-//        this.roles = roles;
-//        return this;
-//    }
-
     public User setCoachProfile(CoachProfile coachProfile) {
-        //TODO gertjan needs to fix this everything
         this.coachProfile = coachProfile;
         return this;
     }
@@ -119,6 +113,4 @@ public class User {
                 ", email='" + email + '\'' +
                 '}';
     }
-
-
 }

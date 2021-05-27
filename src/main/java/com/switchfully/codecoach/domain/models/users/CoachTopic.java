@@ -26,7 +26,6 @@ public class CoachTopic {
 
     public CoachTopic(UUID coachProfileId, Topic topic) {
         this.coachProfileId = coachProfileId;
-//        this.experience = 0;
         this.topic = topic;
     }
 
@@ -61,6 +60,12 @@ public class CoachTopic {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "CoachTopic{" +
+                "topic=" + topic +
+                '}';
+    }
 }
 
 

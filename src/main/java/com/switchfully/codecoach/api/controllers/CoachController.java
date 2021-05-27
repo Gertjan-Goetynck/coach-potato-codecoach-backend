@@ -25,19 +25,11 @@ public class CoachController {
 
     private static final Logger logger = LoggerFactory.getLogger(CoachController.class);
 
-
     public CoachController(CoachTopicMapper coachTopicMapper, CoachService coachService, UserMapper userMapper) {
         this.coachTopicMapper = coachTopicMapper;
         this.coachService = coachService;
         this.userMapper = userMapper;
     }
-
-//    @PutMapping(path = "/{coachId}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.OK)
-//    public UserDTO addTopicsToCoach(@RequestParam String coachId, @RequestBody List<CreateCoachTopicDTO> coachTopics){
-//        logger.info("Adding topics " + coachTopics + " to coach with id " + coachId);
-//        return userMapper.mapUserToDto(this.coachService.setCoachTopics(coachId,coachTopics));
-//    }
 
     @PutMapping(path = "/{coachId}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
