@@ -55,7 +55,7 @@ public class CoachController {
 
     @GetMapping(path = "/{coachId}",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO getCoachById(@RequestParam String coachId) {
+    public UserDTO getCoachById(@PathVariable String coachId) {
         logger.info("Get Coach With Id" + coachId);
         return userMapper.mapUserToDto(this.coachService.getCoachById(coachId));
     }
