@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path="/coaches")
 //@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://coach-potatos-codecoach.netlify.app/")
+@CrossOrigin(origins = "https://coach-potatos-codecoach.netlify.app")
 public class CoachController {
 
     private final CoachTopicMapper coachTopicMapper;
