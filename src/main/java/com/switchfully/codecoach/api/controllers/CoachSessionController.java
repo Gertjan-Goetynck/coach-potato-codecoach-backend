@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/coachsessions")
+@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://coach-potatos-codecoach.netlify.app")
 public class CoachSessionController {
 
     private final CoachSessionMapper coachSessionMapper;
