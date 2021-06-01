@@ -49,6 +49,7 @@ public class CoachSession {
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(date,"date");
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(time,"time");
         ValidationUtil.throwExceptionIfNullOrEmptyOrBlank(location,"location");
+        ValidationUtil.throwExceptionIfObjectIsNull(remarks, "remarks");
 
 
         this.coachee = coachee;

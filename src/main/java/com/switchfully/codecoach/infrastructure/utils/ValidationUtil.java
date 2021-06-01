@@ -49,4 +49,8 @@ public class ValidationUtil {
         }
         return UUID.fromString(id);
     }
+
+    public static void throwExceptionIfObjectIsNull(Object object, String objectName){
+        if (isNull(object)) throw new IllegalArgumentException(objectName + " cannot be null");
+    }
 }
