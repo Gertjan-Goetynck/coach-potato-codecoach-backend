@@ -51,4 +51,5 @@ public class CoachController {
         logger.info("Get Coach With Id" + coachId);
         return userMapper.mapUserToDto(this.coachService.getCoachById(coachId));
     }
+
 }

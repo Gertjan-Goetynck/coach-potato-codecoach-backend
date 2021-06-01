@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -30,5 +31,7 @@ public class CoachSessionService {
         return coachSessionJpaRepository.save(coachSession);
     }
 
-
+    public List<CoachSession> getCoachSessionByCoachId(UUID coachId){
+        return coachSessionJpaRepository.findCoachSessionByCoachId(coachId);
+    }
 }
