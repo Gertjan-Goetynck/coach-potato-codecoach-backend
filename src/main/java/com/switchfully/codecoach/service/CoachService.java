@@ -49,6 +49,6 @@ public class CoachService {
 
     public List<User> getCoaches() {
         logger.info("Getting all coaches");
-        return coachJPARepository.findAllByRolesContains(roleJPARepository.getRoleByRoleType("Coach"));
+        return coachJPARepository.findCoachesWithTopics();
     }
 }
