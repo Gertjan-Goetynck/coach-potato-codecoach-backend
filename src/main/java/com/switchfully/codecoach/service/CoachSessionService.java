@@ -34,4 +34,8 @@ public class CoachSessionService {
     public List<CoachSession> getCoachSessionByCoachId(UUID coachId){
         return coachSessionJpaRepository.findCoachSessionByCoachId(coachId);
     }
+
+    public List<CoachSession> getCoachSessionsByCoacheeId(UUID coacheeId){
+        return coachSessionJpaRepository.findCoachSessionByCoacheeId((coacheeId));
+    }
 }

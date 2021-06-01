@@ -39,6 +39,9 @@ public class CoachSession {
     @Column(name="remarks")
     private String remarks;
 
+    @Column(name="status")
+    private String status;
+
     public CoachSession() {
     }
 
@@ -91,6 +94,10 @@ public class CoachSession {
 
     public String getRemarks() {
         return remarks;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     @Override

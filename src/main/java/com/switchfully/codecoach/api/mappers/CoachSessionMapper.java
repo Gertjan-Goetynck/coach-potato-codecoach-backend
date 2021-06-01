@@ -11,6 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class CoachSessionMapper {
 
@@ -44,7 +47,12 @@ public class CoachSessionMapper {
                 .setDate(coachSession.getDate())
                 .setTime(coachSession.getTime())
                 .setLocation(coachSession.getLocation())
-                .setRemarks(coachSession.getRemarks());
+                .setRemarks(coachSession.getRemarks())
+                .setStatus(coachSession.getStatus());
+    }
+
+    public List<CoachSessionDTO> mapCoachSessionListToCoachSessionDtoList(List<CoachSession> coachSessions){
+        return coachSessions.stream().map(this::mapCoachSessionToCoachSessionDTO).collect(Collectors.toList());
     }
 }
 

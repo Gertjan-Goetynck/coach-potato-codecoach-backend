@@ -8,4 +8,6 @@ import java.util.UUID;
 
 public interface CoachSessionJpaRepository extends JpaRepository<CoachSession, UUID> {
     List<CoachSession> findCoachSessionByCoachId(UUID coachId);
+
+    List<CoachSession> findCoachSessionByCoacheeId(UUID coacheeId);
 }

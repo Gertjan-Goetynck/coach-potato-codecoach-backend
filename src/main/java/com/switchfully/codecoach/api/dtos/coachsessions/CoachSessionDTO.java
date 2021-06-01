@@ -16,6 +16,16 @@ public class CoachSessionDTO {
     private LocalTime time;
     private String location;
     private String remarks;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public CoachSessionDTO setStatus(String status) {
+        this.status = status;
+        return this;
+    }
 
     public UUID getId() {
         return id;

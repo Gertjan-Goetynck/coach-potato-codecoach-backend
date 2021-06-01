@@ -3,6 +3,7 @@ package com.switchfully.codecoach.api.controllers;
 import com.switchfully.codecoach.api.dtos.coachsessions.CoachSessionDTO;
 import com.switchfully.codecoach.api.dtos.coachsessions.CreateCoachSessionDTO;
 import com.switchfully.codecoach.api.mappers.CoachSessionMapper;
+import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 import com.switchfully.codecoach.service.CoachSessionService;
 import com.switchfully.codecoach.service.TopicService;
 import com.switchfully.codecoach.service.UserService;
@@ -11,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/coachsessions")
@@ -43,4 +46,21 @@ public class CoachSessionController {
                                         topicService.getTopicById(createCoachSessionDTO.getTopicId()),
                                         createCoachSessionDTO)));
     }
+
+//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<CoachSessionDTO> getCoachSessionsByUserId()
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE,path = "/coach/{coachId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CoachSessionDTO> getCoachSessionsByCoachId(@PathVariable String coachId){
+        return coachSessionMapper.mapCoachSessionListToCoachSessionDtoList(coachSessionService.getCoachSessionByCoachId(ValidationUtil.convertStringToUUID(coachId)));
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE,path = "/coachee/{coacheeId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CoachSessionDTO> getCoachSessionsByCoacheeId(@PathVariable String coacheeId){
+        return coachSessionMapper.mapCoachSessionListToCoachSessionDtoList(coachSessionService.getCoachSessionsByCoacheeId(ValidationUtil.convertStringToUUID(coacheeId)));
+    }
+
 }
