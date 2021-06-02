@@ -50,7 +50,7 @@ public class CoachSessionService {
     }
 
     public CoachSession updateCoachSession(CoachSession coachSession){
-        if(coachSession.getDate().isBefore(LocalDate.now())){
+        if(coachSession.getStatus().equals(SessionStatus.REQUESTED) && coachSession.getDate().isBefore(LocalDate.now())){
             coachSession.setStatus(SessionStatus.AUTOMATICALLY_CLOSED);
         }
 
