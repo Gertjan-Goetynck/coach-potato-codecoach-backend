@@ -62,6 +62,7 @@ public class CoachSession {
         this.time = time;
         this.location = location;
         this.remarks = remarks;
+        this.status = "Requested";
     }
 
     public UUID getId() {
