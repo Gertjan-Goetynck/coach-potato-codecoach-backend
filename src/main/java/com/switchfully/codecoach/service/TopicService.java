@@ -6,6 +6,8 @@ import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class TopicService {
@@ -17,5 +19,9 @@ public class TopicService {
 
     public Topic getTopicById(String id){
         return topicJPARepository.findById(ValidationUtil.convertStringToUUID(id)).orElseThrow();
+    }
+
+    public List<Topic> getTopics() {
+        return topicJPARepository.findAll();
     }
 }
