@@ -1,10 +1,10 @@
 package com.switchfully.codecoach.service;
 
-import com.switchfully.codecoach.api.dtos.coachsessions.CreateCoachSessionDTO;
 import com.switchfully.codecoach.domain.models.users.CoachSession;
 import com.switchfully.codecoach.domain.models.users.SessionStatus;
 import com.switchfully.codecoach.domain.repositories.CoachSessionJpaRepository;
 import com.switchfully.codecoach.domain.repositories.UserJPARepository;
+import com.switchfully.codecoach.infrastructure.exceptions.CoachSessionNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,26 +34,42 @@ public class CoachSessionService {
         return coachSessionJpaRepository.save(coachSession);
     }
 
-    public List<CoachSession> getCoachSessionByCoachId(UUID coachId){
+    public List<CoachSession> getCoachSessionByCoachId(UUID coachId) {
         return updateCoachSessionListStatus(coachSessionJpaRepository.findCoachSessionByCoachId(coachId));
     }
 
-    public List<CoachSession> getCoachSessionsByCoacheeId(UUID coacheeId){
+    public List<CoachSession> getCoachSessionsByCoacheeId(UUID coacheeId) {
         return updateCoachSessionListStatus(coachSessionJpaRepository.findCoachSessionByCoacheeId((coacheeId)));
     }
 
-    public List<CoachSession> updateCoachSessionListStatus(List<CoachSession> coachSessions){
+    public List<CoachSession> updateCoachSessionListStatus(List<CoachSession> coachSessions) {
 
         return coachSessions.stream()
                 .map(this::updateCoachSession)
                 .collect(Collectors.toList());
     }
 
-    public CoachSession updateCoachSession(CoachSession coachSession){
-        if(coachSession.getStatus().equals(SessionStatus.REQUESTED) && coachSession.getDate().isBefore(LocalDate.now())){
+    public CoachSession updateCoachSession(CoachSession coachSession) {
+        if (coachSession.getStatus().equals(SessionStatus.REQUESTED) && coachSession.getDate().isBefore(LocalDate.now())) {
             coachSession.setStatus(SessionStatus.AUTOMATICALLY_CLOSED);
+        } else if (coachSession.getStatus().equals(SessionStatus.ACCEPTED) && coachSession.getDate().isBefore(LocalDate.now())) {
+            coachSession.setStatus(SessionStatus.DONE_WAITING_FEEDBACK);
         }
 
         return coachSession;
     }
+
+    public CoachSession acceptCoachSession(CoachSession coachSession){
+        return coachSession.setStatus(SessionStatus.ACCEPTED);
+    }
+
+    public CoachSession declineCoachSession(CoachSession coachSession){
+        return coachSession.setStatus(SessionStatus.DECLINED);
+    }
+
+    public CoachSession getCoachSessionBySessionId(UUID sessionId){
+        return coachSessionJpaRepository.findById(sessionId).orElseThrow(() -> new CoachSessionNotFoundException(sessionId.toString()));
+
+    }
+
 }

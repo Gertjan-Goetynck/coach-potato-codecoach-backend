@@ -47,10 +47,6 @@ public class CoachSessionController {
                                         createCoachSessionDTO)));
     }
 
-//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<CoachSessionDTO> getCoachSessionsByUserId()
-
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE,path = "/coach/{coachId}")
     @ResponseStatus(HttpStatus.OK)
     public List<CoachSessionDTO> getCoachSessionsByCoachId(@PathVariable String coachId){
@@ -61,6 +57,18 @@ public class CoachSessionController {
     @ResponseStatus(HttpStatus.OK)
     public List<CoachSessionDTO> getCoachSessionsByCoacheeId(@PathVariable String coacheeId){
         return coachSessionMapper.mapCoachSessionListToCoachSessionDtoList(coachSessionService.getCoachSessionsByCoacheeId(ValidationUtil.convertStringToUUID(coacheeId)));
+    }
+
+    @PostMapping(path = "/{sessionId}/accept", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public CoachSessionDTO acceptCoachSession(@PathVariable String sessionId ){
+        return coachSessionMapper.mapCoachSessionToCoachSessionDTO(coachSessionService.acceptCoachSession(coachSessionService.getCoachSessionBySessionId(ValidationUtil.convertStringToUUID(sessionId))));
+    }
+
+    @PostMapping(path = "/{sessionId}/decline", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public CoachSessionDTO declineCoachSession(@PathVariable String sessionId ){
+        return coachSessionMapper.mapCoachSessionToCoachSessionDTO(coachSessionService.declineCoachSession(coachSessionService.getCoachSessionBySessionId(ValidationUtil.convertStringToUUID(sessionId))));
     }
 
 }
