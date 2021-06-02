@@ -40,7 +40,8 @@ public class CoachSession {
     private String remarks;
 
     @Column(name="status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private SessionStatus status;
 
     public CoachSession() {
     }
@@ -62,7 +63,12 @@ public class CoachSession {
         this.time = time;
         this.location = location;
         this.remarks = remarks;
-        this.status = "Requested";
+        this.status = SessionStatus.REQUESTED;
+    }
+
+    public CoachSession setStatus(SessionStatus status) {
+        this.status = status;
+        return this;
     }
 
     public UUID getId() {
@@ -97,7 +103,7 @@ public class CoachSession {
         return remarks;
     }
 
-    public String getStatus() {
+    public SessionStatus getStatus() {
         return status;
     }
 

@@ -2,6 +2,7 @@ package com.switchfully.codecoach.api.dtos.coachsessions;
 
 import com.switchfully.codecoach.api.dtos.topics.TopicDTO;
 import com.switchfully.codecoach.api.dtos.users.UserDTO;
+import com.switchfully.codecoach.domain.models.users.SessionStatus;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,13 +17,13 @@ public class CoachSessionDTO {
     private LocalTime time;
     private String location;
     private String remarks;
-    private String status;
+    private SessionStatus status;
 
-    public String getStatus() {
+    public SessionStatus getStatus() {
         return status;
     }
 
-    public CoachSessionDTO setStatus(String status) {
+    public CoachSessionDTO setStatus(SessionStatus status) {
         this.status = status;
         return this;
     }
