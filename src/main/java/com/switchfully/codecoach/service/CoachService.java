@@ -1,5 +1,6 @@
 package com.switchfully.codecoach.service;
 
+import com.switchfully.codecoach.api.dtos.coachprofiles.UpdateCoachProfileDTO;
 import com.switchfully.codecoach.api.dtos.coachtopics.CreateCoachTopicDTO;
 import com.switchfully.codecoach.api.mappers.CoachTopicMapper;
 import com.switchfully.codecoach.domain.models.users.Topic;
@@ -50,5 +51,13 @@ public class CoachService {
     public List<User> getCoaches() {
         logger.info("Getting all coaches");
         return coachJPARepository.findCoachesWithTopics();
+    }
+
+    public User editCoachById(String coachId, UpdateCoachProfileDTO updateCoachProfileDto){
+        logger.info("Editing information for coach with id " +coachId);
+        User coach = getCoachById(coachId);
+        coach.getCoachProfile().setIntroduction(updateCoachProfileDto.getIntroduction()).setAvailable(updateCoachProfileDto.getAvailability());
+        return coach;
+
     }
 }

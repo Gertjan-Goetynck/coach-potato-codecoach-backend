@@ -1,5 +1,6 @@
 package com.switchfully.codecoach.api.controllers;
 
+import com.switchfully.codecoach.api.dtos.coachprofiles.UpdateCoachProfileDTO;
 import com.switchfully.codecoach.api.dtos.coachtopics.CreateCoachTopicDTO;
 import com.switchfully.codecoach.api.dtos.users.UserDTO;
 import com.switchfully.codecoach.api.mappers.CoachTopicMapper;
@@ -50,6 +51,13 @@ public class CoachController {
     public UserDTO getCoachById(@PathVariable String coachId) {
         logger.info("Get Coach With Id" + coachId);
         return userMapper.mapUserToDto(this.coachService.getCoachById(coachId));
+    }
+
+    @PutMapping(path = "/{coachId}/updateprofile", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO updateCoachProfile(@PathVariable String coachId, @RequestBody UpdateCoachProfileDTO updateCoachProfileDTO){
+        logger.info("Updating profile of coach with id " + coachId);
+        return userMapper.mapUserToDto(this.coachService.editCoachById(coachId, updateCoachProfileDTO));
     }
 
 }
