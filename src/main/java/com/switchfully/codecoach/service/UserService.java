@@ -56,6 +56,7 @@ public class UserService {
     }
 
     public User logInWithEmailAndPassword(String email, String password) {
+        email = email.toLowerCase();
         logger.info("Logging in with email " + email);
         User user = userJPARepository.findByEmail(email);
         if (user == null) {
