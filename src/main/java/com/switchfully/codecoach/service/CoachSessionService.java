@@ -4,6 +4,7 @@ import com.switchfully.codecoach.domain.models.coaches.CoachSession;
 import com.switchfully.codecoach.domain.models.sessions.SessionStatus;
 import com.switchfully.codecoach.domain.repositories.CoachSessionJpaRepository;
 import com.switchfully.codecoach.infrastructure.exceptions.CoachSessionNotFoundException;
+import org.apache.tomcat.jni.Local;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -47,9 +49,10 @@ public class CoachSessionService {
     }
 
     public CoachSession updateCoachSession(CoachSession coachSession) {
-        if (coachSession.getStatus().equals(SessionStatus.REQUESTED) && coachSession.getDate().isBefore(LocalDate.now())) {
+        LocalDateTime coachSessionDateTime = LocalDateTime.of(coachSession.getDate(), coachSession.getTime());
+        if (coachSession.getStatus().equals(SessionStatus.REQUESTED) && coachSessionDateTime.isBefore(LocalDateTime.now())) {
             coachSession.setStatus(SessionStatus.AUTOMATICALLY_CLOSED);
-        } else if (coachSession.getStatus().equals(SessionStatus.ACCEPTED) && coachSession.getDate().isBefore(LocalDate.now())) {
+        } else if (coachSession.getStatus().equals(SessionStatus.ACCEPTED) && coachSessionDateTime.isBefore(LocalDateTime.now())) {
             coachSession.setStatus(SessionStatus.DONE_WAITING_FEEDBACK);
         }
 
