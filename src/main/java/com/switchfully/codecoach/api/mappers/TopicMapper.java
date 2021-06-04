@@ -1,9 +1,7 @@
 package com.switchfully.codecoach.api.mappers;
 
 import com.switchfully.codecoach.api.dtos.topics.TopicDTO;
-import com.switchfully.codecoach.api.dtos.users.UserDTO;
-import com.switchfully.codecoach.domain.models.users.Topic;
-import com.switchfully.codecoach.domain.models.users.User;
+import com.switchfully.codecoach.domain.models.coaches.Topic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

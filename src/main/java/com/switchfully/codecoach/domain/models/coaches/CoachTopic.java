@@ -1,4 +1,4 @@
-package com.switchfully.codecoach.domain.models.users;
+package com.switchfully.codecoach.domain.models.coaches;
 
 import javax.persistence.*;
 import java.util.UUID;

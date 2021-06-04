@@ -1,5 +1,6 @@
 package com.switchfully.codecoach.domain.models.users;
 
+import com.switchfully.codecoach.domain.models.coaches.CoachProfile;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 
 import javax.persistence.*;
@@ -38,7 +39,7 @@ public class User {
 
     @ManyToMany
     @JoinTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    private List<Role> roles = new ArrayList<>();
+    private final List<Role> roles = new ArrayList<>();
 
     public User() {
     }
@@ -87,11 +88,6 @@ public class User {
 
     public String getPictureUrl() {
         return pictureUrl;
-    }
-
-    public User setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
-        return this;
     }
 
     public User setCoachProfile(CoachProfile coachProfile) {

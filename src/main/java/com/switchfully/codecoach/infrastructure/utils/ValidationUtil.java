@@ -19,12 +19,6 @@ public class ValidationUtil {
         return object.toString().isBlank();
     }
 
-    public static void throwExceptionIfNullObject(Object object, String objectName) {
-        if (object == null) {
-            throw new IllegalArgumentException(objectName + " cannot be null.");
-        }
-    }
-
     public static boolean isValidEmail(String email) {
         return email.matches(EMAIL_FORMAT);
     }

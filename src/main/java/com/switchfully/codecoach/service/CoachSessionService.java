@@ -1,9 +1,8 @@
 package com.switchfully.codecoach.service;
 
-import com.switchfully.codecoach.domain.models.users.CoachSession;
-import com.switchfully.codecoach.domain.models.users.SessionStatus;
+import com.switchfully.codecoach.domain.models.coaches.CoachSession;
+import com.switchfully.codecoach.domain.models.sessions.SessionStatus;
 import com.switchfully.codecoach.domain.repositories.CoachSessionJpaRepository;
-import com.switchfully.codecoach.domain.repositories.UserJPARepository;
 import com.switchfully.codecoach.infrastructure.exceptions.CoachSessionNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,13 +19,11 @@ import java.util.stream.Collectors;
 @Transactional
 public class CoachSessionService {
     private final CoachSessionJpaRepository coachSessionJpaRepository;
-    private final UserJPARepository userJPARepository;
     private static final Logger logger = LoggerFactory.getLogger(CoachSessionService.class);
 
     @Autowired
-    public CoachSessionService(CoachSessionJpaRepository coachSessionJpaRepository, UserJPARepository userJPARepository) {
+    public CoachSessionService(CoachSessionJpaRepository coachSessionJpaRepository) {
         this.coachSessionJpaRepository = coachSessionJpaRepository;
-        this.userJPARepository = userJPARepository;
     }
 
     public CoachSession addCoachSession(CoachSession coachSession) {

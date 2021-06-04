@@ -1,10 +1,9 @@
 
-package com.switchfully.codecoach.domain.models.users;
+package com.switchfully.codecoach.domain.models.coaches;
 
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 

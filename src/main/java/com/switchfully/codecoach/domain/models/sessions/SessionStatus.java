@@ -1,4 +1,4 @@
-package com.switchfully.codecoach.domain.models.users;
+package com.switchfully.codecoach.domain.models.sessions;
 
 public enum SessionStatus {
     REQUESTED,

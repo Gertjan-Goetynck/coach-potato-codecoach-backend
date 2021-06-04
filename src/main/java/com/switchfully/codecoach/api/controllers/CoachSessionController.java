@@ -17,8 +17,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/coachsessions")
-//@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://coach-potatos-codecoach.netlify.app")
+@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://coach-potatos-codecoach.netlify.app")
 public class CoachSessionController {
 
     private final CoachSessionMapper coachSessionMapper;

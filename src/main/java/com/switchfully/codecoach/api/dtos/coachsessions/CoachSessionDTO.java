@@ -2,7 +2,7 @@ package com.switchfully.codecoach.api.dtos.coachsessions;
 
 import com.switchfully.codecoach.api.dtos.topics.TopicDTO;
 import com.switchfully.codecoach.api.dtos.users.UserDTO;
-import com.switchfully.codecoach.domain.models.users.SessionStatus;
+import com.switchfully.codecoach.domain.models.sessions.SessionStatus;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

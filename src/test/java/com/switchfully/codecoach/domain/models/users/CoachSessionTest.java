@@ -1,5 +1,7 @@
 package com.switchfully.codecoach.domain.models.users;
 
+import com.switchfully.codecoach.domain.models.coaches.CoachSession;
+import com.switchfully.codecoach.domain.models.coaches.Topic;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

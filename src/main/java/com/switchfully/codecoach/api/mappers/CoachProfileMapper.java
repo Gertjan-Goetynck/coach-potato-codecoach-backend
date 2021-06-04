@@ -1,7 +1,7 @@
 package com.switchfully.codecoach.api.mappers;
 
 import com.switchfully.codecoach.api.dtos.coachprofiles.CoachProfileDTO;
-import com.switchfully.codecoach.domain.models.users.CoachProfile;
+import com.switchfully.codecoach.domain.models.coaches.CoachProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

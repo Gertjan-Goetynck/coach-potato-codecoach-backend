@@ -1,14 +1,7 @@
 package com.switchfully.codecoach.api.dtos.coachsessions;
 
-import com.switchfully.codecoach.api.dtos.topics.TopicDTO;
-import com.switchfully.codecoach.api.dtos.users.UserDTO;
-import com.switchfully.codecoach.domain.models.users.Topic;
-import com.switchfully.codecoach.domain.models.users.User;
-
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.UUID;
 
 public class CreateCoachSessionDTO {
 

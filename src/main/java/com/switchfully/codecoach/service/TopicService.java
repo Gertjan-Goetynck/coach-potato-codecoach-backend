@@ -1,6 +1,6 @@
 package com.switchfully.codecoach.service;
 
-import com.switchfully.codecoach.domain.models.users.Topic;
+import com.switchfully.codecoach.domain.models.coaches.Topic;
 import com.switchfully.codecoach.domain.repositories.TopicJPARepository;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 import org.springframework.stereotype.Service;

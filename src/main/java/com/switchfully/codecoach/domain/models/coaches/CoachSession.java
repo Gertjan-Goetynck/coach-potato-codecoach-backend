@@ -1,5 +1,7 @@
-package com.switchfully.codecoach.domain.models.users;
+package com.switchfully.codecoach.domain.models.coaches;
 
+import com.switchfully.codecoach.domain.models.sessions.SessionStatus;
+import com.switchfully.codecoach.domain.models.users.User;
 import com.switchfully.codecoach.infrastructure.utils.ValidationUtil;
 
 import javax.persistence.*;

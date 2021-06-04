@@ -1,6 +1,6 @@
 package com.switchfully.codecoach.service;
 
-import com.switchfully.codecoach.domain.models.users.CoachProfile;
+import com.switchfully.codecoach.domain.models.coaches.CoachProfile;
 import com.switchfully.codecoach.domain.models.users.User;
 import com.switchfully.codecoach.domain.repositories.RoleJPARepository;
 import com.switchfully.codecoach.domain.repositories.UserJPARepository;

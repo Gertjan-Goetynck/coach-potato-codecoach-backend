@@ -2,10 +2,8 @@ package com.switchfully.codecoach.api.mappers;
 
 import com.switchfully.codecoach.api.dtos.coachsessions.CoachSessionDTO;
 import com.switchfully.codecoach.api.dtos.coachsessions.CreateCoachSessionDTO;
-import com.switchfully.codecoach.api.dtos.users.CreateUserDTO;
-import com.switchfully.codecoach.api.dtos.users.UserDTO;
-import com.switchfully.codecoach.domain.models.users.CoachSession;
-import com.switchfully.codecoach.domain.models.users.Topic;
+import com.switchfully.codecoach.domain.models.coaches.CoachSession;
+import com.switchfully.codecoach.domain.models.coaches.Topic;
 import com.switchfully.codecoach.domain.models.users.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
